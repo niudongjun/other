@@ -1,0 +1,66 @@
+<CollectFileCfg>
+    <SubItems>
+        <SubItem name="item1">
+            <FileOptions>
+                <FileOption name="\d{4}?日前联络线计划\d{4}-\d{2}-\d{2}总加.xls" suffix=".xls" dir="" toDir="" mode="row" group="true" header="true">
+<!--                    暂时未扩展的功能-->
+<!--                    <Parameters>-->
+<!--                        <Parameter key="" value="" type=""/>-->
+<!--                    </Parameters>-->
+                    <MatchFileMethod>
+                        <Method class="com.fp.collect.util.FieldTransMethod" name="matchFileMethodTemplate" ref="0"/>
+                    </MatchFileMethod>
+                    <ValidFileMethods>
+                        <Method class="com.fp.collect.util.FieldTransMethod" name="vaildMethodTemplate" ref="0"/>
+                    </ValidFileMethods>
+<!--                    抽取前文件处理 参照样例方法-->
+                    <PreHandleFileMethod>
+                        <Method class="com.fp.collect.util.FieldTransMethod" name="fileMethodTemplate" ref="0"/>
+                    </PreHandleFileMethod>
+<!--                    可代替实际抽取逻辑的方法配置 参照样例方法-->
+                    <HandleFileMethod>
+                        <Method class="com.fp.collect.util.FieldTransMethod" name="fileMethodTemplate" ref="0"/>
+                    </HandleFileMethod>
+                    <Sheets>
+                        <Sheet index="0">
+<!--                            <Grids>-->
+<!--                                <Grid column="1"></Grid>-->
+<!--                                <Grid column="3"></Grid>-->
+<!--                            </Grids>-->
+                            <Groups>
+                                <Group by="0" collect="3" sort="2" operator="list">
+<!--                                    <Method class="com.fp.databasepmtest.collect.util.FieldTransMethod" name="getGroup"/>-->
+                                </Group>
+                            </Groups>
+                        </Sheet>
+                    </Sheets>
+                    <!--                    抽取后文件处理 参照样例方法-->
+                    <AfterHandleFileMethod>
+                        <Method class="com.fp.collect.util.FieldTransMethod" name="fileMethodTemplate" ref="0"/>
+                    </AfterHandleFileMethod>
+                    <!--                    入库前文件处理 参照样例方法-->
+                    <PreLoadTableMethod>
+                        <Method class="com.fp.collect.util.FieldTransMethod" name="fileMethodTemplate" ref="1"/>
+                    </PreLoadTableMethod>
+                    <!--                    入库文件处理 可代替入库 参照样例方法-->
+                    <LoadTableMethod>
+                        <Method class="com.fp.collect.util.FieldTransMethod" name="loadMethodTemplate" ref="1"/>
+                    </LoadTableMethod>
+                    <Tables>
+                        <Table id="1" name="market_publish_point" dir="E:\test_table.csv" sheet="0" isLoad="true">
+                            <Fields>
+                                <Field name="id" type="UUID">
+                                    <Method class="com.fp.databasepmtest.collect.util.FieldTransMethod" name="getIdByDate" args="1"/>
+                                </Field>
+                            </Fields>
+                        </Table>
+                    </Tables>
+                    <!--                    入库后文件处理 参照样例方法-->
+                    <AfterLoadTableMethod>
+                        <Method class="com.fp.collect.util.FieldTransMethod" name="loadMethodTemplate" ref="1"/>
+                    </AfterLoadTableMethod>
+                </FileOption>
+            </FileOptions>
+        </SubItem>
+    </SubItems>
+</CollectFileCfg>
